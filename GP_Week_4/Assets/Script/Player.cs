@@ -5,12 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 0.05f;
-    public Rigidbody rb;
+    public float jump = 10f;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rb.GetComponent<Rigidbody> ();
     }
 
     // Update is called once per frame
@@ -20,5 +21,13 @@ public class Player : MonoBehaviour
         float v = Input.GetAxis("Vertical");
 
         transform.Translate(new Vector3(h, 0, v) * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(0, jump, 0);
+
+            //Vector3 jumpVelocity = new Vector3(0, jump, 0);
+            //rb.velocity = rb.velocity + jumpVelocity;
+        }
     }
 }
