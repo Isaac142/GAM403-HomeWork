@@ -4,7 +4,7 @@ using System.Collections;
 public class ChangeWeapons : MonoBehaviour
 {
     public GameObject[] weapons;
-    public float normalSpeed = 0.05f;
+    public float normalSpeed = 0.05f;        //Attempt at making different weapons give different speed movements
     public float knifeSpeed = 0.10f;
 
     void Start()
@@ -14,7 +14,7 @@ public class ChangeWeapons : MonoBehaviour
         WeaponSwap(0);
     }
 
-    void Update()
+    void Update()           //Calling onto the "WeaponSwap" function instead of writing the whole thing over and over, allowing modellers to add more weapons without having to rewrite the whole script
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -37,7 +37,7 @@ public class ChangeWeapons : MonoBehaviour
         }
     }
 
-    void WeaponSwap(int weaponNumber)
+    void WeaponSwap(int weaponNumber)        //created this function to not make less repetetive scripts in the update function
     {
         for (int i = 0; i < weapons.Length; i++)
         {

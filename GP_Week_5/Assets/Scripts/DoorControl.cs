@@ -4,8 +4,7 @@ using System.Collections;
 public class DoorControl : MonoBehaviour 
 {
     //declare animator
-    Animator anim;
-    int open = Animator.StringToHash("Doors");
+    public Animator anim;
 
     void Start()
 	{
@@ -22,10 +21,9 @@ public class DoorControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.CompareTag("Player"))
-        //{
-        //    other.gambeObject.anim.SetTrigger(open);
-        //}
+        if (other.gameObject.CompareTag("Player"))
+            anim.SetTrigger("DoorOpen");
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -35,7 +33,10 @@ public class DoorControl : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            anim.SetTrigger("DoorClose");
+        }
     }
 
 }
